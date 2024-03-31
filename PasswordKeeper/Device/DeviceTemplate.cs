@@ -3,6 +3,7 @@
 
     public void UseOfDevice(string filePath, int optionDevice, string securePassword, List<string> correctSecurePassword, List<string> devicePasswords, ITextualRepository fileOperator)
     {
+        var device = new DeviceUsing();
         do
         {
             Console.WriteLine("What do you want to do with your passwords: ");
@@ -18,68 +19,15 @@
             {
                 if (optionDevice == 1)
                 {
-                    do
-                    {
-                        Console.WriteLine("To see passwords, at first you have to put your secure password:");
-                        securePassword = Console.ReadLine();
-                        Console.WriteLine();
-
-                        if (securePassword == correctSecurePassword[0])
-                        {
-                            int passwordId = 1;
-                            foreach (var devicePassword in devicePasswords)
-                            {
-                                Console.WriteLine($"{passwordId}. {devicePassword}");
-                                passwordId++;
-                            }
-                            Console.WriteLine();
-                            break;
-                        }
-                        else if (securePassword != correctSecurePassword[0] && securePassword != "e" && securePassword != "E")
-                        {
-                            Console.WriteLine("Password was incorrect. Try again or type E to exit to previous menu.");
-                        }
-                    } while (securePassword != "e" && securePassword != "E");
+                    device.Show(securePassword, correctSecurePassword, devicePasswords);
                 }
                 else if (optionDevice == 2)
                 {
-                    Console.WriteLine("Write a Password you want to add:");
-                    var newPassword = Console.ReadLine();
-                    Console.WriteLine("Write a category, website, app for what this password is");
-                    var newPasswordCategory = Console.ReadLine();
-                    newPassword = $"{newPassword} ({newPasswordCategory})";
-                    devicePasswords.Add(newPassword);
-                    fileOperator.Write(filePath, devicePasswords);
+                    device.Add(devicePasswords, fileOperator, filePath);
                 }
                 else if (optionDevice == 3)
                 {
-
-                    do
-                    {
-                        Console.WriteLine("To see passwords, at first you have to put your secure password:");
-                        securePassword = Console.ReadLine();
-
-                        if (securePassword == correctSecurePassword[0])
-                        {
-                            Console.WriteLine("Your passwords list:");
-                            int passwordId = 1;
-                            foreach (var devicePassword in devicePasswords)
-                            {
-                                Console.WriteLine($"{passwordId}. {devicePassword}");
-                                passwordId++;
-                            }
-                            Console.WriteLine("Type a id of password you want to delete:");
-                            var passwordToDelete = Console.ReadLine();
-                            var passwordToDeleteId = int.Parse(passwordToDelete);
-                            devicePasswords.RemoveAt(passwordToDeleteId - 1);
-                            fileOperator.Write(filePath, devicePasswords);
-                            break;
-                        }
-                        else if (securePassword != correctSecurePassword[0] && securePassword != "e" && securePassword != "E")
-                        {
-                            Console.WriteLine("Password was incorrect. Try again or type E to exit to previous menu.");
-                        }
-                    } while (securePassword != "e" && securePassword != "E");
+                    device.Remove(securePassword, correctSecurePassword, devicePasswords, fileOperator, filePath);
                 }
                 else
                 {
@@ -97,3 +45,4 @@
         
     }
 }
+
