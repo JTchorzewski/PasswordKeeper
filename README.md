@@ -1,4 +1,4 @@
-This console application allows you to keep all of your passwords in one save place. Passwords are split into 3 categories (so it's easy to organise them) and
+This console application allows you to keep all of your passwords in one safe place. Passwords are split into 3 categories (so it's easy to organise them) and
 app is very easy to use (everything you want to know is displayed on screen). The only thing you have to know is you safe password (in the app it is 123456, but you can change it
 while using application). 
 
