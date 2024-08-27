@@ -3,4 +3,4 @@ app is very easy to use (everything you want to know is displayed on screen). Th
 while using application). 
 
 !!!IMPORTANT!!!
-Add .txt files included in GitHub to bin/Debug/net8.0 so the app will properly(there are some passwords already in the files just to show from start how this app works)
+Add .txt (you can also add json files) files included in GitHub to bin/Debug/net8.0 so the app will properly(there are some passwords already in the files just to show from start how this app works)
